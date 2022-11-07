@@ -1,6 +1,6 @@
 const { credential } = require("firebase-admin")
 const firebase = require("firebase-admin")
-// const serviceAccount = require("./introductiontobackend-firebase-adminsdk-offpj-bec8162401.json") isi dengan key masing"
+const serviceAccount = require('./gdsc-backend-firebase-adminsdk-gyv0k-dde3fe0215.json');
 
 firebase.initializeApp({
     credential: credential.cert(serviceAccount)
