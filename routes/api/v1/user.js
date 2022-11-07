@@ -42,7 +42,27 @@ router
       });
     }
   })
-  .get(async (req, res) => {});
+  .get(async (req, res) => {
+    try {
+      let users = await Users.get();
+      const data = [];
+
+      users.forEach((user) => {
+        data.push({ id: user.id, ...user.data() });
+      });
+
+      return res.status(200).send({
+        success: true,
+        data,
+      });
+    } catch (e) {
+      console.error(e);
+      res.send({
+        success: false,
+        message: getErrorMessage(e?.code ?? 2),
+      });
+    }
+  });
 
 router
   .route("/:id")
